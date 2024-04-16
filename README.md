@@ -16,6 +16,7 @@ https://velog.io/@divan/RabbitMq-%EC%84%A4%EC%B9%98
 1. RabbitMQ 메시지
    </br>https://www.rabbitmq.com/tutorials/tutorial-one-java (rabbit MQ 공식)
    </br>https://spring.io/guides/gs/messaging-rabbitmq (스프링부트 공식)
+   </br>https://github.com/spring-projects/spring-amqp-samples (샘플 소스)
    </br>https://adjh54.tistory.com/292 (상세한블로그)
 
 
