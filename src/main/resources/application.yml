@@ -16,12 +16,14 @@ spring:
     password: guest
 
 rabbitmq:
-  queue:
-    name: test
-  exchange:
-    name: test.topic
-  routing:
-    key: key
+    queue:
+      json-name: json
+      dto-name: dto
+    exchange:
+      json-name: json.topic
+      dto-name: dto.topic
+    routing:
+      key: key
 
 logging:
   level:

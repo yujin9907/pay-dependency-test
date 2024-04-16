@@ -33,7 +33,7 @@ public class MainController {
                     content = {@Content(schema = @Schema(implementation = MessageDto.class))}),
             @ApiResponse(responseCode = "500", description = "파싱 에러"),
     })
-    public String sendDto(@ModelAttribute MessageDto messageDto) {
+    public String sendDto(@RequestBody MessageDto messageDto) {
         try {
             rabbitMqService.sendMessageTestDto(messageDto);
             return "ok";

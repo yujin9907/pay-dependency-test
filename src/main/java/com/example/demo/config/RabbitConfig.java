@@ -13,34 +13,79 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.DefaultClassMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@PropertySource(value = "classpath:/application.yml")
 @RequiredArgsConstructor
 @Configuration
 public class RabbitConfig {
 
     private final RabbitProperties rabbitProperties;
-    private static final String QUEUE_TEST = "test";
-    private static final String EXCHANGE_TEST = "test.topic";
-    private static final String ROUTING_KEY = "key";
+
+    @Value("${rabbitmq.routing.key}")
+    private String routingKey;
+    @Value("${rabbitmq.queue.json-name}")
+    private String jsonQueue;
+    @Value("${rabbitmq.exchange.json-name}")
+    private String jsonExchange;
+    @Value("${rabbitmq.queue.dto-name}")
+    private String dtoQueue;
+    @Value("${rabbitmq.exchange.dto-name}")
+    private String dtoExchange;
 
     @Bean
-    public Queue queue() {
-        return new Queue(QUEUE_TEST);
+    public Queue jsonQueue() {
+        return new Queue(jsonQueue);
+    }
+    @Bean
+    public TopicExchange jsonExchange() {
+        return new TopicExchange(jsonExchange);
+    }
+    @Bean
+    public Queue dtoQueue() {
+        return new Queue(dtoQueue);
+    }
+    @Bean
+    public TopicExchange dtoExchange() {
+        return new TopicExchange(dtoExchange);
+    }
+    @Bean
+    public Binding jsonBinding() {
+        return BindingBuilder.bind(jsonQueue()).to(jsonExchange()).with(routingKey);
+    }
+    @Bean
+    public Binding dtoBinding() {
+        return BindingBuilder.bind(dtoQueue()).to(dtoExchange()).with(routingKey);
     }
 
+
+
     @Bean
-    public TopicExchange topicExchange() {
-        return new TopicExchange(EXCHANGE_TEST);
+    MessageConverter messageConverter() {
+        return new Jackson2JsonMessageConverter();
     }
+    // 센더 설정
     @Bean
-    public Binding binding(Queue queue, TopicExchange topicExchange) {
-        return BindingBuilder.bind(queue).to(topicExchange).with(ROUTING_KEY);
+    RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+        rabbitTemplate.setMessageConverter(messageConverter);
+        return rabbitTemplate;
     }
+    // 리스너 설정
+    @Bean
+    SimpleRabbitListenerContainerFactory simpleRabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
+        final SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setMessageConverter(messageConverter());
+        return factory;
+    }
+    // 연결설정
     @Bean
     public CachingConnectionFactory connectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
@@ -49,26 +94,5 @@ public class RabbitConfig {
         connectionFactory.setUsername(rabbitProperties.getUsername());
         connectionFactory.setPassword(rabbitProperties.getPassword());
         return connectionFactory;
-    }
-
-    // 센더 설정
-    @Bean
-    MessageConverter messageConverter() {
-        return new Jackson2JsonMessageConverter();
-    }
-    @Bean
-    RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(messageConverter);
-        return rabbitTemplate;
-    }
-
-    // 리스너 설정
-    @Bean
-    SimpleRabbitListenerContainerFactory simpleRabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
-        final SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        factory.setConnectionFactory(connectionFactory);
-        factory.setMessageConverter(messageConverter());
-        return factory;
     }
 }

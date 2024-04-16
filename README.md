@@ -15,9 +15,10 @@ https://velog.io/@divan/RabbitMq-%EC%84%A4%EC%B9%98
 # 여기서 할 것
 1. RabbitMQ 메시지
    </br>https://www.rabbitmq.com/tutorials/tutorial-one-java (rabbit MQ 공식)
-   </br>https://spring.io/guides/gs/messaging-rabbitmq (스프링부트 공식)
+   </br>https://docs.spring.io/spring-amqp/reference/3.1-SNAPSHOT/amqp/abstractions.html (스프링부트 공식)
    </br>https://github.com/spring-projects/spring-amqp-samples (샘플 소스)
    </br>https://adjh54.tistory.com/292 (상세한블로그)
+   </br>https://www.javaguides.net/2022/07/spring-boot-rabbitmq-multiple-queues.html (멀티큐)
 
 
 2. swagger (springdoc - fox 아님)
@@ -108,6 +109,8 @@ public void sendMessageTest(MessageDto messageDto) throws JsonProcessingExceptio
 ```
 
 # PayTest
+전체 실행 프로세스
+![img.png](img_10.png)
 ### 1. restTemplate
 * [restTemplate 사용 시 주의사항](https://medium.com/@ShimSeongbo/resttemplate%EC%9C%BC%EB%A1%9C-api-%ED%98%B8%EC%B6%9C-%EC%8B%9C-%EA%BC%AD-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-2%EA%B0%80%EC%A7%80-best-practice-b45592ecdfbc)
 * [restTemplate 사용 방법](https://juntcom.tistory.com/141)

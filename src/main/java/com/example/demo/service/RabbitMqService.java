@@ -17,16 +17,17 @@ public class RabbitMqService {
 
     private final RabbitTemplate rabbitTemplate;
 
-    @Value("${rabbitmq.queue.name}")
-    private String queueName;
-    @Value("${rabbitmq.exchange.name}")
-    private String exchangeName;
+    @Value("${rabbitmq.exchange.json-name}")
+    private String jsonExchange;
+    @Value("${rabbitmq.exchange.dto-name}")
+    private String dtoExchange;
     @Value("${rabbitmq.routing.key}")
     private String key;
 
     public void sendMessageTestDto(MessageDto messageDto) throws JsonProcessingException {
         log.error("보냄-Dto");
-        rabbitTemplate.convertAndSend(exchangeName, key, messageDto);
+        log.info("보낸내용 {}", messageDto);
+        rabbitTemplate.convertAndSend(dtoExchange, key, messageDto);
     }
 
     public void sendMessageTestJson(MessageDto messageDto) throws JsonProcessingException {
@@ -35,6 +36,6 @@ public class RabbitMqService {
 
         log.error("보냄-json");
         log.error(toJson);
-        rabbitTemplate.convertAndSend(exchangeName, key, toJson);
+        rabbitTemplate.convertAndSend(jsonExchange, key, toJson);
     }
 }
