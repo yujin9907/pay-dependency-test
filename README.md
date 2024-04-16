@@ -106,3 +106,9 @@ public void sendMessageTest(MessageDto messageDto) throws JsonProcessingExceptio
      log.info("---{}", dto.toString());
  }
 ```
+
+# PayTest
+### 1. restTemplate
+* [restTemplate 사용 시 주의사항](https://medium.com/@ShimSeongbo/resttemplate%EC%9C%BC%EB%A1%9C-api-%ED%98%B8%EC%B6%9C-%EC%8B%9C-%EA%BC%AD-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-2%EA%B0%80%EC%A7%80-best-practice-b45592ecdfbc)
+* [restTemplate 사용 방법](https://juntcom.tistory.com/141)
+
