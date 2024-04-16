@@ -1,11 +1,19 @@
 package com.example.demo.dto;
 
-import lombok.Builder;
-import lombok.Getter;
+import com.example.demo.domain.MessageTemp;
+import lombok.*;
+import org.springframework.stereotype.Service;
 
-@Getter
-@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MessageDto {
     private String title;
     private String message;
+    public MessageTemp toEntity() {
+        return MessageTemp.builder()
+                .title(this.title)
+                .message(this.message)
+                .build();
+    }
 }

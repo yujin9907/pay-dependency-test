@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: demo
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:5012;databaseName=tempdb;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: 123
   rabbitmq:
     host: localhost
     port: 5672
@@ -18,7 +23,15 @@ rabbitmq:
   routing:
     key: key
 
-#springdoc:
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+
+# springdoc:
 #  swagger-ui:
 #    # swagger-ui ?? ??. default ?? /swagger-ui.html??.
 #    path: /swagger-custom-ui.html

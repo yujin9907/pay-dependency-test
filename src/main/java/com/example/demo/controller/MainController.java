@@ -5,10 +5,7 @@ import com.example.demo.service.RabbitMqService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,9 +20,19 @@ public class MainController {
     }
 
     @GetMapping("/send")
-    public String sendTest(@ModelAttribute MessageDto messageDto) {
+    public String sendDto(@ModelAttribute MessageDto messageDto) {
         try {
-            rabbitMqService.sendMessageTest(messageDto);
+            rabbitMqService.sendMessageTestDto(messageDto);
+            return "ok";
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @PostMapping("/send-json")
+    public String sendTest2(@RequestBody MessageDto messageDto) {
+        try {
+            rabbitMqService.sendMessageTestJson(messageDto);
             return "ok";
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);

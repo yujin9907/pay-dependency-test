@@ -29,13 +29,16 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:12.6.1.jre11'
 
     // rabbit
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
-    // 직렬화
-    // implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2'
+
     // swagger
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
+    // 직렬화
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.0'
 }
 
 tasks.named('test') {

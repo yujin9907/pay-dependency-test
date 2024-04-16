@@ -23,9 +23,17 @@ public class RabbitMqService {
     @Value("${rabbitmq.routing.key}")
     private String key;
 
-    public void sendMessageTest(MessageDto messageDto) throws JsonProcessingException {
+    public void sendMessageTestDto(MessageDto messageDto) throws JsonProcessingException {
+        log.error("보냄-Dto");
+        rabbitTemplate.convertAndSend(exchangeName, key, messageDto);
+    }
+
+    public void sendMessageTestJson(MessageDto messageDto) throws JsonProcessingException {
         ObjectMapper om = new ObjectMapper();
         String toJson = om.writeValueAsString(messageDto);
+
+        log.error("보냄-json");
+        log.error(toJson);
         rabbitTemplate.convertAndSend(exchangeName, key, toJson);
     }
 }
