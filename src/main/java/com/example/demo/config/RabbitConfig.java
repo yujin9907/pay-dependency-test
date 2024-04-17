@@ -21,6 +21,8 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.HashMap;
 import java.util.Map;
 
+// https://docs.spring.io/spring-amqp/reference/amqp/broker-configuration.html
+
 @PropertySource(value = "classpath:/application.yml")
 @RequiredArgsConstructor
 @Configuration
@@ -75,6 +77,7 @@ public class RabbitConfig {
     RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(messageConverter);
+//        rabbitTemplate.setReceiveTimeout(5000L);
         return rabbitTemplate;
     }
     // 리스너 설정

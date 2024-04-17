@@ -21,7 +21,7 @@ public class MessageDto {
     public MessageTempLog toLogEntity() {
         return MessageTempLog.builder()
                 .title(this.title)
-                .message(this.title)
+                .message(this.message)
                 .build();
     }
 }

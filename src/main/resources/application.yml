@@ -17,13 +17,13 @@ spring:
 
 rabbitmq:
     queue:
-      json-name: json
-      dto-name: dto
+      json-name: test.json
+      dto-name: test.dto
     exchange:
       json-name: json.topic
       dto-name: dto.topic
     routing:
-      key: key
+      key: test
 
 logging:
   level:
