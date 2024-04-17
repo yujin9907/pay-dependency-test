@@ -31,13 +31,18 @@ public class RabbitMqConsumerService {
     }
 
     @RabbitListener(bindings = @QueueBinding(
-            value = @Queue(value = "test.dto", durable = "true"),
-            exchange = @Exchange(value = "dto.topic", type = ExchangeTypes.TOPIC),
-            key = "test")
+            value = @Queue(value = "test.dto"),
+            exchange = @Exchange(value = "dto.topic", type = "topic"), //ExchangeTypes.TOPIC
+            key = "none-this-key")
     ) // 여러가지 옵션 가능
+//    @RabbitListener(bindings = @QueueBinding(
+//            value = @Queue,
+//            exchange = @Exchange(value = "auto.exch"),
+//            key = "invoiceRoutingKey")
+//    ) // 키를 사용해 받을 경우
     @SendTo("test.json") // 재전송
     public String receiveDto(MessageDto dto) throws InterruptedException, JsonProcessingException {
-        Thread.sleep(10000L);
+        Thread.sleep(1000L);
 
         log.error("받음-Dto");
         log.info("receive - dto {}", dto.toString());

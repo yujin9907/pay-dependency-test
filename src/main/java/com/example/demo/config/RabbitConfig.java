@@ -59,11 +59,11 @@ public class RabbitConfig {
     }
     @Bean
     public Binding jsonBinding() {
-        return BindingBuilder.bind(jsonQueue()).to(jsonExchange()).with(routingKey);
+        return BindingBuilder.bind(jsonQueue()).to(jsonExchange()).with("*.test");
     }
     @Bean
     public Binding dtoBinding() {
-        return BindingBuilder.bind(dtoQueue()).to(dtoExchange()).with(routingKey);
+        return BindingBuilder.bind(dtoQueue()).to(dtoExchange()).with("*.test");
     }
 
 

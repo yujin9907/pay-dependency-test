@@ -27,7 +27,7 @@ public class RabbitMqService {
     public void sendMessageTestDto(MessageDto messageDto) throws JsonProcessingException {
         log.error("보냄-Dto");
         log.info("보낸내용 {}", messageDto);
-        rabbitTemplate.convertAndSend(dtoExchange, key, messageDto);
+        rabbitTemplate.convertAndSend(dtoExchange, "*.test", messageDto);
     }
 
     public void sendMessageTestJson(MessageDto messageDto) throws JsonProcessingException {

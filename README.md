@@ -107,6 +107,17 @@ public void sendMessageTest(MessageDto messageDto) throws JsonProcessingExceptio
      log.info("---{}", dto.toString());
  }
 ```
+### 4. 토픽 전송
+1. RabbitMQConfig binding (여기키로가는지?)
+2. RabbitMQService 보내는 곳 (여기키로가는지?)
+3. RabbitMQConsumerService 받는 곳
+
+내가 보낼 때, convertAndSend 에 정의된 키로 가는지, config binding 에 정의된 키로 가는지?
+두개를 일치시켜야 가는 건지?
+
+https://jonnung.dev/rabbitmq/2019/02/06/about-amqp-implementtation-of-rabbitmq/
+
+바인딩이 큐를 결정 -> 큐는 아묻닥 보냄
 
 # PayTest
 전체 실행 프로세스
