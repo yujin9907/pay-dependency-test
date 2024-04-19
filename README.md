@@ -68,6 +68,17 @@ spring:
 ```
 저 url 뒤, __encrypt, certificate__ 설정을 해야 동작함
 
+### (4) 다른 서버 테이블 갖다 붓기
+1. 객체 우클릭 > 테스트 > 데이터 내보내기
+2. 복사할 db (147 테스트 서버) 입력, 드라이버 선택 주의
+![img_1.png](img_1.png)
+3. 붙여넣기 할 db (내로컬) 입력, 이미지에 IP 잘못된 주소임, 드라이버 선택 주의
+![img_2.png](img_2.png)
+4. 하나 이상의 데이블/뷰, 긁을 테이블 선택 및 실행
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
+
+
 # Rabbit MQ 메시지 형식
 ![img_7.png](readme/img_7.png)
 ```java

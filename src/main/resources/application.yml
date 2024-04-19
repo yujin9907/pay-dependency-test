@@ -6,7 +6,7 @@ spring:
     name: demo
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:5012;databaseName=tempdb;encrypt=true;trustServerCertificate=true
+    url: jdbc:sqlserver://localhost:5012;databaseName=master;encrypt=true;trustServerCertificate=true
     username: sa
     password: 123
   rabbitmq:
