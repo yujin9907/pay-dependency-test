@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @Tag(name = "Rabbit MQ", description = "ampq 이것저것 테스트")
-public class PayController {
+public class RabbitController {
 
     private final RabbitMqService rabbitMqService;
 
