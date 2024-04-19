@@ -1,14 +1,12 @@
-package com.example.demo.service;
+package com.example.demo.domain.rabbit.service;
 
-import com.example.demo.domain.MessageTempLogRepository;
-import com.example.demo.domain.MessageTempRepository;
-import com.example.demo.dto.MessageDto;
+import com.example.demo.domain.rabbit.repository.MessageTempLogRepository;
+import com.example.demo.domain.rabbit.repository.MessageTempRepository;
+import com.example.demo.domain.rabbit.dto.MessageDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.ExchangeTypes;
-import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.QueueBinding;

@@ -1,9 +1,8 @@
-package com.example.demo.dto;
+package com.example.demo.domain.rabbit.dto;
 
-import com.example.demo.domain.MessageTemp;
-import com.example.demo.domain.MessageTempLog;
+import com.example.demo.domain.rabbit.domain.MessageTemp;
+import com.example.demo.domain.rabbit.domain.MessageTempLog;
 import lombok.*;
-import org.springframework.stereotype.Service;
 
 @Data
 @AllArgsConstructor

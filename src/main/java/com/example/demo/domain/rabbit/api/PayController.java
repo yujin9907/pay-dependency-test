@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.demo.domain.rabbit.api;
 
-import com.example.demo.dto.MessageDto;
-import com.example.demo.service.RabbitMqService;
+import com.example.demo.domain.rabbit.dto.MessageDto;
+import com.example.demo.domain.rabbit.service.RabbitMqService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @Tag(name = "Rabbit MQ", description = "ampq 이것저것 테스트")
-public class MainController {
+public class PayController {
 
     private final RabbitMqService rabbitMqService;
 

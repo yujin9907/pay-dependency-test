@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.demo.domain.pay.service;
 
-import com.example.demo.dto.PayReqDto;
-import com.example.demo.dto.KcpDto;
+import com.example.demo.domain.pay.dto.PayReqDto;
+import com.example.demo.domain.rabbit.dto.KcpDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
@@ -15,7 +15,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.PrivateKey;
 
 @Service
 @Slf4j

@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.global.util;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 @Slf4j
-public class SignService {
+public class SignUtil {
     public void getKcpSign() throws Exception {
         PrivateKey priKey = loadSplMctPrivateKeyPKCS8("../splPrikeyPKCS8.pem", "changeit"); // (개인키 경로, 개인키 비밀번호)
         String signData = makeSignatureData(priKey, "T0000^20210719000000^PACA");    // 서명데이터 생성

@@ -1,8 +1,8 @@
-package com.example.demo.dto;
+package com.example.demo.domain.pay.dto;
 
 
+import com.example.demo.domain.rabbit.dto.KcpDto;
 import lombok.Getter;
-import lombok.Setter;
 
 // 결제창에서 결제 요청 시 넘겨주는 데이터
 @Getter

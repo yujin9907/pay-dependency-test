@@ -1,9 +1,8 @@
-package com.example.demo.service;
+package com.example.demo.domain.rabbit.service;
 
-import com.example.demo.dto.MessageDto;
+import com.example.demo.domain.rabbit.dto.MessageDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

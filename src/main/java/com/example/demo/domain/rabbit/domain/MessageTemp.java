@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.example.demo.domain.rabbit.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,9 +11,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class MessageTempLog {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MessageTemp {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
     private String title;
     private String message;
