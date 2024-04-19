@@ -42,6 +42,9 @@ dependencies {
 
     // pay - json 생성
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+    // 인증서
+    implementation 'org.bouncycastle:bcpkix-jdk18on:1.75'
 }
 
 tasks.named('test') {

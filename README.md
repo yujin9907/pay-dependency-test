@@ -10,7 +10,9 @@ https://adoptium.net/temurin/releases/
 
 ### rabbit MQ (docker)
 https://velog.io/@divan/RabbitMq-%EC%84%A4%EC%B9%98
-
+```cmd
+docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+```
 
 # 여기서 할 것
 1. RabbitMQ 메시지
